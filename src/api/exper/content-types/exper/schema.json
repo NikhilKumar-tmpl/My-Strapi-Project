@@ -37,24 +37,18 @@
         "audios"
       ]
     },
-    "city": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::city.city",
-      "inversedBy": "activity_cards"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "activity_cards"
-    },
     "tag": {
       "type": "enumeration",
       "enum": [
         "Top Pick",
         "Iconic"
       ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "activity_cards"
     }
   }
 }

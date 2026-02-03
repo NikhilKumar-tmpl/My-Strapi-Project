@@ -39,14 +39,13 @@
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::category.category",
-      "mappedBy": "city"
+      "target": "api::category.category"
     },
-    "activity_cards": {
+    "city": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::exper.exper",
-      "mappedBy": "city"
+      "target": "api::category.category",
+      "mappedBy": "cities"
     }
   }
 }

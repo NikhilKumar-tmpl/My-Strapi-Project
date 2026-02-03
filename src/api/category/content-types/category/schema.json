@@ -21,11 +21,11 @@
     "order": {
       "type": "integer"
     },
-    "city": {
+    "cities": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::city.city",
-      "inversedBy": "categories"
+      "inversedBy": "city"
     },
     "activity_cards": {
       "type": "relation",

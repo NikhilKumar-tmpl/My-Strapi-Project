@@ -442,7 +442,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
   attributes: {
     activity_cards: Schema.Attribute.Relation<'oneToMany', 'api::exper.exper'>;
-    city: Schema.Attribute.Relation<'manyToOne', 'api::city.city'>;
+    cities: Schema.Attribute.Relation<'manyToOne', 'api::city.city'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -473,11 +473,11 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    activity_cards: Schema.Attribute.Relation<'oneToMany', 'api::exper.exper'>;
     categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     >;
+    city: Schema.Attribute.Relation<'oneToMany', 'api::category.category'>;
     country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -515,7 +515,6 @@ export interface ApiExperExper extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
-    city: Schema.Attribute.Relation<'manyToOne', 'api::city.city'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
