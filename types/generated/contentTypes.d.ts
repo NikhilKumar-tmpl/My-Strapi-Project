@@ -529,6 +529,7 @@ export interface ApiExperExper extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
+    shortDescription: Schema.Attribute.String;
     slug: Schema.Attribute.UID<'title'>;
     tag: Schema.Attribute.Enumeration<['Top Pick', 'Iconic']>;
     title: Schema.Attribute.String;

@@ -49,6 +49,9 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "activity_cards"
+    },
+    "shortDescription": {
+      "type": "string"
     }
   }
 }
