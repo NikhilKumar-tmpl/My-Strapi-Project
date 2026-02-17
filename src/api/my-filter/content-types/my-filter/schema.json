@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "my_filters",
+  "info": {
+    "singularName": "my-filter",
+    "pluralName": "my-filters",
+    "displayName": "myFilter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "myFilterType": {
+      "type": "enumeration",
+      "enum": [
+        "Interest",
+        "Traveler-Type",
+        "Location"
+      ]
+    },
+    "activity_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exper.exper",
+      "inversedBy": "my_filters"
+    },
+    "iconImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

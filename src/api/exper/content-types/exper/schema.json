@@ -18,9 +18,6 @@
       "type": "uid",
       "targetField": "title"
     },
-    "description": {
-      "type": "blocks"
-    },
     "price": {
       "type": "biginteger"
     },
@@ -40,8 +37,10 @@
     "tag": {
       "type": "enumeration",
       "enum": [
-        "Top Pick",
-        "Iconic"
+        "Iconic",
+        "Popular",
+        "Niche",
+        "Top Pick"
       ]
     },
     "category": {
@@ -52,6 +51,38 @@
     },
     "shortDescription": {
       "type": "string"
+    },
+    "newDescription": {
+      "type": "richtext"
+    },
+    "location": {
+      "type": "component",
+      "component": "location.location",
+      "repeatable": false
+    },
+    "WheelchairAccessibility": {
+      "type": "component",
+      "component": "wheelchair-accessibility.wheelchair-accessibility",
+      "repeatable": false
+    },
+    "tagImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "time": {
+      "type": "string"
+    },
+    "my_filters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::my-filter.my-filter",
+      "mappedBy": "activity_cards"
     }
   }
 }

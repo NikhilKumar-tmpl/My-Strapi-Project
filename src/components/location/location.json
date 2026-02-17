@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_location_locations",
+  "info": {
+    "displayName": "location",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "location1": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

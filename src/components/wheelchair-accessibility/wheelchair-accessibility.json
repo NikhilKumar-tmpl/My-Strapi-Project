@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_wheelchair_accessibility_wheelchair_accessibility_s",
+  "info": {
+    "displayName": "Wheelchair Accessibility:"
+  },
+  "options": {},
+  "attributes": {
+    "WheelchairAccessibility": {
+      "type": "boolean"
+    },
+    "wheelChair": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -518,7 +518,6 @@ export interface ApiExperExper extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
     image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -526,13 +525,61 @@ export interface ApiExperExper extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::exper.exper'> &
       Schema.Attribute.Private;
+    location: Schema.Attribute.Component<'location.location', false>;
+    my_filters: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::my-filter.my-filter'
+    >;
+    newDescription: Schema.Attribute.RichText;
     price: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
     shortDescription: Schema.Attribute.String;
     slug: Schema.Attribute.UID<'title'>;
-    tag: Schema.Attribute.Enumeration<['Top Pick', 'Iconic']>;
+    tag: Schema.Attribute.Enumeration<
+      ['Iconic', 'Popular', 'Niche', 'Top Pick']
+    >;
+    tagImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    time: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WheelchairAccessibility: Schema.Attribute.Component<
+      'wheelchair-accessibility.wheelchair-accessibility',
+      false
+    >;
+  };
+}
+
+export interface ApiMyFilterMyFilter extends Struct.CollectionTypeSchema {
+  collectionName: 'my_filters';
+  info: {
+    displayName: 'myFilter';
+    pluralName: 'my-filters';
+    singularName: 'my-filter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activity_cards: Schema.Attribute.Relation<'manyToMany', 'api::exper.exper'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    iconImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::my-filter.my-filter'
+    > &
+      Schema.Attribute.Private;
+    myFilterType: Schema.Attribute.Enumeration<
+      ['Interest', 'Traveler-Type', 'Location']
+    >;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -802,6 +849,7 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ext: Schema.Attribute.String;
+    focalPoint: Schema.Attribute.JSON;
     folder: Schema.Attribute.Relation<'manyToOne', 'plugin::upload.folder'> &
       Schema.Attribute.Private;
     folderPath: Schema.Attribute.String &
@@ -1052,6 +1100,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::city.city': ApiCityCity;
       'api::exper.exper': ApiExperExper;
+      'api::my-filter.my-filter': ApiMyFilterMyFilter;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
